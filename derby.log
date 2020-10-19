@@ -1,0 +1,93 @@
+----------------------------------------------------------------
+Sat Dec 21 18:25:54 BRT 2019:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-016f-2a5a-3c26-0000037961f8 
+on database directory memory:C:\Users\naion\Desktop\sgpad\sgpad\testdb with class loader sun.misc.Launcher$AppClassLoader@73d16e93 
+Loaded from file:/C:/Users/naion/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_231-b11
+user.dir=C:\Users\naion\Desktop\sgpad\sgpad
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Sat Dec 21 18:27:37 BRT 2019:
+Shutting down instance a816c00e-016f-2a5a-3c26-0000037961f8 on database directory memory:C:\Users\naion\Desktop\sgpad\sgpad\testdb with class loader sun.misc.Launcher$AppClassLoader@73d16e93 
+----------------------------------------------------------------
+Sat Dec 21 18:27:39 BRT 2019:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance 176240b2-016f-2a5a-3c26-0000037961f8 
+on database directory memory:C:\Users\naion\Desktop\sgpad\sgpad\testdb with class loader sun.misc.Launcher$AppClassLoader@73d16e93 
+Loaded from file:/C:/Users/naion/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_231-b11
+user.dir=C:\Users\naion\Desktop\sgpad\sgpad
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Sat Dec 21 18:27:42 BRT 2019:
+Shutting down instance 176240b2-016f-2a5a-3c26-0000037961f8 on database directory memory:C:\Users\naion\Desktop\sgpad\sgpad\testdb with class loader sun.misc.Launcher$AppClassLoader@73d16e93 
+----------------------------------------------------------------
+Sat Dec 21 18:27:43 BRT 2019:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a0f1c156-016f-2a5a-3c26-0000037961f8 
+on database directory memory:C:\Users\naion\Desktop\sgpad\sgpad\testdb with class loader sun.misc.Launcher$AppClassLoader@73d16e93 
+Loaded from file:/C:/Users/naion/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_231-b11
+user.dir=C:\Users\naion\Desktop\sgpad\sgpad
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Sat Dec 21 18:28:07 BRT 2019:
+Shutting down instance a0f1c156-016f-2a5a-3c26-0000037961f8 on database directory memory:C:\Users\naion\Desktop\sgpad\sgpad\testdb with class loader sun.misc.Launcher$AppClassLoader@73d16e93 
+----------------------------------------------------------------
+Sat Dec 21 18:28:09 BRT 2019:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance 44c541fa-016f-2a5a-3c26-0000037961f8 
+on database directory memory:C:\Users\naion\Desktop\sgpad\sgpad\testdb with class loader sun.misc.Launcher$AppClassLoader@73d16e93 
+Loaded from file:/C:/Users/naion/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_231-b11
+user.dir=C:\Users\naion\Desktop\sgpad\sgpad
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Sat Dec 21 18:28:31 BRT 2019:
+Shutting down instance 44c541fa-016f-2a5a-3c26-0000037961f8 on database directory memory:C:\Users\naion\Desktop\sgpad\sgpad\testdb with class loader sun.misc.Launcher$AppClassLoader@73d16e93 
+----------------------------------------------------------------
+Sat Dec 21 18:28:33 BRT 2019:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance 02dcc29e-016f-2a5a-3c26-0000037961f8 
+on database directory memory:C:\Users\naion\Desktop\sgpad\sgpad\testdb with class loader sun.misc.Launcher$AppClassLoader@73d16e93 
+Loaded from file:/C:/Users/naion/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_231-b11
+user.dir=C:\Users\naion\Desktop\sgpad\sgpad
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Sat Dec 21 18:28:42 BRT 2019:
+Shutting down instance 02dcc29e-016f-2a5a-3c26-0000037961f8 on database directory memory:C:\Users\naion\Desktop\sgpad\sgpad\testdb with class loader sun.misc.Launcher$AppClassLoader@73d16e93 
+----------------------------------------------------------------
+Sat Dec 21 18:28:43 BRT 2019:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance db384342-016f-2a5a-3c26-0000037961f8 
+on database directory memory:C:\Users\naion\Desktop\sgpad\sgpad\testdb with class loader sun.misc.Launcher$AppClassLoader@73d16e93 
+Loaded from file:/C:/Users/naion/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.8.0_231-b11
+user.dir=C:\Users\naion\Desktop\sgpad\sgpad
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''

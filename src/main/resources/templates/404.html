@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title>Erro</title>
+
+<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+<link href="css/sb-admin-2.css" rel="stylesheet">
+</head>
+
+<body id="page-top">
+
+	<nav th:replace="fragmentos/fragmentos :: cabecalho"></nav>
+	
+	<div id="wrapper">
+		<!-- <ul th:replace="fragmentos/fragmentos :: sidebar"></ul> -->
+
+		<div id="content-wrapper" class="d-flex flex-column">
+
+			<div id="content">
+				<!-- <br><br><br><br><br><br><br><br> -->
+				<div class="container-fluid">
+					<div class="text-center">
+						<div class="error mx-auto">404</div>
+						<br>
+						<p class="lead text-gray-800 mb-5">Página não encontrada.</p>
+						<a href="/">&larr; Voltar à página inicial</a>
+					</div>
+				</div>
+			</div>
+			<footer th:replace="fragmentos/fragmentos :: footer"></footer>
+
+		</div>
+	</div>
+
+	<script src="vendor/jquery/jquery.min.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+	<script src="js/sb-admin-2.min.js"></script>
+
+</body>
+</html>

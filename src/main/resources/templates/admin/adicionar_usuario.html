@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title>Adicionar usuário</title>
+
+<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+<link href="css/sb-admin-2.css" rel="stylesheet">
+<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+
+</head>
+<body id="page-top">
+
+	<nav th:replace="fragmentos/fragmentos :: cabecalho"></nav>
+	<div id="wrapper">
+	<ul th:replace="fragmentos/fragmentos :: sidebar_admin"></ul>
+		<div id="content-wrapper" class="d-flex flex-column">
+		<br><br>
+			<div class="content">
+				<div class="container">
+				<h1 class="col-md-9">Adicionar novo usuário</h1>
+					<form class="form-signin" method="post" th:object="${usuario}">
+						<div class="form-group col-md-9">
+							Nome: <input type="text" class="form-control" th:field="*{nome}" required>
+							<div class="alert alert-danger mb-3" role="alert" th:if="${#fields.hasErrors('nome')}">
+                           		<label th:errors="*{nome}" class="validation-message alert-danger"></label>
+                       		</div>
+						</div>
+                       		
+						<div class="form-group col-md-9">
+							Email: <input type="text" class="form-control" th:field="*{email}" required>
+							<div class="alert alert-danger mb-3" role="alert" th:if="${#fields.hasErrors('email')}">
+	                           		<label th:errors="*{email}" class="validation-message alert-danger"></label>
+	                       	</div>
+						</div>
+						
+						<div class="form-group col-md-9">
+							Matrícula: <input type="text" class="form-control" th:field="*{matricula}" required>
+							<div class="alert alert-danger mb-3" role="alert" th:if="${#fields.hasErrors('matricula')}">
+                           		<label th:errors="*{matricula}" class="validation-message alert-danger"></label>
+                       		</div>
+						</div>
+						
+						<!-- <div class="form-group col-md-9">
+							<b>Função:</b> <select name="funcao" id="funcao" class="form-control" th:field="*{funcao}" required>
+											<option value=" "></option>
+											<option th:value="${'Assessor'}" th:text="${'Assessor'}"></option>
+											<option th:value="${'Secretario'}" th:text="${'Secretário'}"></option>
+										</select>
+						</div> -->
+						
+						<div class="form-group col-md-9">
+							<input type="checkbox" name="acesso_admin"/> Permitir que esse usuário tenha privilégios de administrador
+						</div>
+						
+						<div class="form-group col-md-9">
+							<input type="submit" class="btn btn-success" value="Adicionar"/>
+				       	</div>
+					</form>
+				</div>
+			</div>
+		</div>
+		<footer th:replace="fragmentos/fragmentos :: footer"></footer>
+	</div>
+	
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+<script src="js/sb-admin-2.js"></script>
+<script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

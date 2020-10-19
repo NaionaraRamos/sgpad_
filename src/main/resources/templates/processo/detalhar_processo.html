@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+	<title>Detalhes do processo</title>
+	
+	<link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" th:href="@{/vendor/fontawesome-free/css/all.min.css}">
+	<link href="/css/sb-admin-2.css" rel="stylesheet" th:href="@{/css/sb-admin-2.css}">
+	
+	<style>
+	
+		#content span {
+			font-size: 150%;
+			color: black
+		}
+		
+		strong {
+			font-size: 150%;
+			color: black;
+		}
+		
+ 		#detalhes-pad {
+			display: none;
+		}
+		
+	</style>
+	
+</head>
+
+<body id="page-top">
+
+	<nav th:replace="fragmentos/fragmentos :: cabecalho"></nav>
+	
+	<div id="wrapper">
+		<ul th:replace="fragmentos/fragmentos :: sidebar"></ul>
+
+		<div id="content-wrapper" class="d-flex flex-column container">
+
+			<div id="content" class="container-fluid">
+			<br><br><br><br>
+			
+			<strong th:text="${'Processo nº '}"></strong><span th:text="${processo.numeroProcesso}"></span><br><br>
+			<strong th:text="${'Interessado: '}"></strong><span th:text="${processo.interessado}"></span><br><br>
+			<strong th:text="${'Natureza do Processo: '}"></strong><span id="tipoProcesso" th:text="${processo.naturezaProcesso}"></span><br><br>
+			<strong th:text="${'Portaria Instauradora: '}"></strong><span th:text="${processo.portariaInstauradora}"></span><br><br>
+			<strong th:text="${'Data da publicação da portaria-designação: '}"></strong><span th:text="${#dates.format(processo.dataPublicacaoPortariaDesignacao, 'dd/MM/yyyy')}"></span><br><br>
+			<strong th:text="${'Data do início do processo: '}"></strong><span th:text="${#dates.format(processo.dataInicioProcesso, 'dd/MM/yyyy')}"></span><br><br>
+			<strong th:text="${'Dias corridos: '}"></strong><span th:text="${processo.diasCorridos}"></span><br><br>
+			<strong th:text="${'Andamento: '}"></strong><span th:text="${processo.andamento}"></span><br><br>
+			<strong th:text="${'Presidente: '}"></strong><span th:text="${processo.presidente.nome}"></span><br><br>
+			<strong th:text="${'Assessor 1: '}"></strong><span th:text="${processo.assessorUm.nome}"></span><br><br>
+			
+			<div id="detalhes-pad">
+				<strong th:text="${'Assessor 2: '}"></strong><span th:text="${processo.assessorDois?.nome}"></span><br><br>
+				<strong th:text="${'Secretário: '}"></strong><span th:text="${processo.secretario?.nome}"></span><br><br>
+			</div>
+			
+			<strong th:text="${'Última Portaria Expedida: '}"></strong><span th:text="${processo.ultimaPortariaExpedida}"></span><br><br>
+			<strong th:text="${'Data publicação última portaria: '}"></strong><span th:text="${#dates.format(processo.dataPublicacaoUltimaPortaria, 'dd/MM/yyyy')}"></span><br><br>
+			<strong th:text="${'Data vencimento última portaria: '}"></strong><span th:text="${#dates.format(processo.dataVencimento, 'dd/MM/yyyy')}"></span><br><br>
+			<strong th:text="${'Dias faltantes: '}"></strong><span th:text="${processo.diasFaltantes}"></span><br><br><br><br>
+			<div class="form-group col-md-9" style=" margin-bottom: 80px;">
+				<a style="font-size:25px; font-weight: bold;" href="javascript:history.back()" class="btn btn-primary">&larr; Voltar</a>
+				<a style="font-size:25px; font-weight: bold; margin-left: 20px;" th:href="@{/alterar_processo/{id}(id=${processo.id})}" class="btn btn-success">Alterar</a>
+			</div>
+					
+			</div>
+		</div>
+		<footer th:replace="fragmentos/fragmentos :: footer"></footer>
+	</div>
+	
+	<script src="vendor/jquery/jquery.min.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+	<script src="js/sb-admin-2.js"></script>
+  	<script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+	<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+  	
+  	<script>
+  	
+  		var tipo = $('#tipoProcesso').text();
+  		console.log(tipo);
+  		
+  	 	if(tipo == 'PAD'){
+  			$('#detalhes-pad').css('display', 'block');
+  		}
+  	 	
+  	</script>
+</body>
+</html>

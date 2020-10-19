@@ -1,0 +1,79 @@
+<!-- <!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title>Recuperar senha</title>
+
+<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+<link href="css/sb-admin-2.css" rel="stylesheet">
+
+</head>
+<body>
+
+<div sec:authorize="hasAuthority('CHANGE_PASSWORD_PRIVILEGE')">
+	<h1 th:text="#{message.resetPassword}">Reset</h1>
+	<form>
+		<label th:text="#label.usuario.senha}" type="password">Senha</label>
+		<input id="password" name="newPassword" type="password" value=""/>
+		
+		<label th:text="#{label.usuario.confirmPass}">Confirmar</label>
+		<input id="matchPassword" type="password" value=""/>
+		
+		<div id="globalError" style="display:none" th:text="#{PasswordMatches.usuario}">Error</div>
+		<button type="submit" onclick="savePass()" th:text="#{messageUpdatePassword}">Submit</button>
+	</form>
+</div>
+	
+	<script src="vendor/jquery/jquery.min.js"></script>
+	<script th:inline="javascript">
+		var serverContext = [[@{/}]];
+		
+		$(document).ready(function(){
+			
+			$('form').submit(function(event){
+				savePass(event);
+			});
+			
+			$(":password").keyup(function(){
+				if($("#password").val() != $("#matchPassword").val()){
+					$("#globalError").show().html(/*[[#PasswordMatches.user}]]*/);
+				}else{
+					$("#globalError").html("").hide();
+				}
+			});
+		});
+		
+		function savePass(event){
+			event.preventDefault();
+			if($("#password").val() != $("#matchPassword").val()){
+				$("#globalError").show().html(/*[[#{PasswordMatches.user}]]*/);
+				return;
+			}
+			
+			var formData = $('form').serialize();
+			$.post(serverContext + "user/savePassword", formData, function(data){
+				window.location.href = serverContext + "login?message=" + data.message;
+			}).fail(function(data){
+				if(data.responseJSON.error.indexOf("InternalError") > -1){
+					window.location.href = serverContext + "login?message=" + data.responseJSON.message;
+				}else{
+					var errors = $.parseJSON(data.responseJSON.message);
+					$.each(errors, function(index, item)){
+						$("#globalError").show().html(item.defaultMessage);
+					});
+				 errors = $.parseJSON(data.resposeJSON.error);
+				 $.each(errors, function(index, item){
+					 $("#globalError").show().append(item.defaultMessage + "<br/>");
+				 });
+				}
+			});
+		}
+		
+	</script>
+	
+</body>
+</html> -->

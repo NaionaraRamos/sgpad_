@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
+
+  <title>Reportar problema</title>
+
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <!-- <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet"> -->
+  <link href="css/sb-admin-2.css" rel="stylesheet">
+  
+  <style>
+  	
+  	#problema_reportado{
+		display: none;
+	}
+	
+	#form_problema{
+		display: block;
+	}
+
+  	#assunto{
+  		height: 40px;
+  		width: 500px;
+  	}
+  	
+  	#problema{
+  		height: 200px;
+  		width: 500px;
+  	}
+  </style>
+</head>
+	
+<body id="page-top">
+  
+	<nav th:replace="fragmentos/fragmentos :: cabecalho"></nav>
+	<div id="wrapper">
+	    
+	    <div id="content-wrapper" class="d-flex flex-column">
+	    	<div class="content container">
+	    	<div id="form_problema">
+		    	<form action="/reportar_problema" class="form-horizontal" method="post">
+		    		<div class="form-group col-md-9">
+		    			<b>Assunto: </b><input type="text" id="assunto" name="assunto" class="form-control" th:object="${assunto}" required/>
+		    		</div>
+		    		
+		    		<div class="form-group col-md-9">
+		    			<b>Problema:</b>
+		    			<textarea id="problema" name="problema" class="form-control" required></textarea>
+		    		</div>
+		    		<a href = "/" class="btn btn-danger">Cancelar</a>&nbsp&nbsp&nbsp
+		    		<button onclick="enviar()" class="btn btn-success">Enviar</button>
+		    		
+		    	</form>
+		    </div>
+			<br><br><br><br>
+				<div id="problema_reportado" class="alert alert-primary">
+					<p id="paragrafo"></p>
+				</div>
+		</div>
+	  	 </div>
+	  	 <footer th:replace="fragmentos/fragmentos :: footer"></footer>
+	  </div>
+
+<script src="vendor/jquery/jquery.min.js"></script>
+<script>
+	
+	function enviar(){
+		
+		document.getElementById('problema_reportado').style.display = 'block';
+		document.getElementById('form_problema').style.display = 'none';
+		document.getElementById('paragrafo').innerHTML = "Sua mensagem foi enviada com sucesso!";
+	}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title>Inserir Processo</title>
+
+<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+<link href="css/sb-admin-2.css" rel="stylesheet">
+<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+
+<style>
+
+	span, b, nav, #can {
+		font-size: 150%;
+		font-weight: bold;
+	}
+	
+	#form-pad {
+		display: none;
+	}
+	
+</style>
+
+</head>
+
+<body id="page-top">
+
+	<nav th:replace="fragmentos/fragmentos :: cabecalho"></nav>
+	<div id="wrapper">
+		<ul th:replace="fragmentos/fragmentos :: sidebar"></ul>
+		<div id="content-wrapper" class="d-flex flex-column">
+		<br><br>
+		
+			<div class="content container">
+					<h3 class="col-md-9"><b>Inserir Processo</b></h3><br><br>
+					<form class="form-horizontal" method="post" th:object="${processo}">
+						
+						<div class="form-group col-md-9">
+							<b>Número do Processo:</b> <input style="font-size:24px;" type="text" id="numeroProcesso" class="form-control" th:field="*{numeroProcesso}" required>
+							<div class="alert alert-danger mb-3" role="alert" th:if="${#fields.hasErrors('numeroProcesso')}">
+                            	<label th:errors="*{numeroProcesso}" class="validation-message alert-danger"></label>
+                        	</div>
+						</div>
+	
+						<!-- <div class="form-group col-md-9">
+							<b>Unidade de origem:</b> <input type="text" class="form-control" th:field="*{unidadeOrigem}" required>
+						</div> -->
+	
+						<div class="form-group col-md-9">
+							<b>Natureza do processo:</b> <select style="font-size:24px;" name="naturezaProcesso" id="naturezaProcesso" class="form-control" th:field="*{naturezaProcesso}" required>
+															 <option value=""></option>
+															 <option th:value="${'PAD'}" th:text="${'PAD'}"></option>
+															 <option th:value="${'Sindicancia'}" th:text="${'Sindicância'}"></option>
+														 </select>
+						</div>
+						
+						<div class="form-group col-md-9">
+							<b>Portaria instauradora:</b> <input style="font-size:24px;" type="text" class="form-control" th:field="*{portariaInstauradora}" required>
+						</div>
+	
+						<div class="form-group col-md-9">
+							<b>Data de início do processo:</b> <input style="font-size:24px;" type="date" class="form-control" th:field="*{dataInicioProcesso}" required>
+						</div>
+	
+						<div class="form-group col-md-9">
+							<b>Data da publicação da portaria-designação:</b> <input style="font-size:24px;" type="date" class="form-control" th:field="*{dataPublicacaoPortariaDesignacao}" required>
+						</div>
+						
+						<div class="form-group col-md-9">
+							<b>Presidente:</b> <select style="font-size:24px;" name="listaUsuariosPresidente" id="listaUsuariosPresidente" class="form-control" th:field="*{presidente}">
+											<option value=""></option>
+											<option th:each="usuario: ${usuarios}" th:value="${usuario.matricula}" th:text="${usuario.nome}"></option>
+										</select>
+						</div>
+						
+						<div class="form-group col-md-9">
+							<b>Assessor 1:</b> <select style="font-size:24px;" name="listaUsuariosAssessorUm" id="listaUsuariosAssessorUm" class="form-control" th:field="*{assessorUm}">
+											<option value=""></option>
+											<option th:each="usuario: ${usuarios}" th:value="${usuario.matricula}" th:text="${usuario.nome}"></option>
+										</select>
+						</div>
+
+						<div id="form-pad">
+							<div class="form-group col-md-9">
+								<b>Assessor 2:</b> <select style="font-size:24px;" name="listaUsuariosAssessorDois" id="listaUsuariosAssessorDois" class="form-control" th:field="*{assessorDois}">
+												<option value=""></option>
+												<option th:each="usuario: ${usuarios}" th:value="${usuario.matricula}" th:text="${usuario.nome}"></option>
+											</select>
+							</div>
+							
+							<div class="form-group col-md-9">
+								<b>Secretário:</b> <select style="font-size:24px;" name="listaUsuariosSecretario" id="listaUsuariosSecretario" class="form-control" th:field="*{secretario}">
+												<option value=""></option>
+												<option th:each="usuario: ${usuarios}" th:value="${usuario.matricula}" th:text="${usuario.nome}"></option>
+											</select>
+							</div>
+						</div>
+						
+						<div class="form-group col-md-9">
+							<b>Interessado:</b> <input style="font-size:24px;" type="text" class="form-control" th:field="*{interessado}" required>
+						</div>
+	
+						<!-- <div class="form-group col-md-9">
+							<b>Fatos:</b> <input type="text" class="form-control" th:field="*{fatos}" required>
+						</div> -->
+						
+						<div class="form-group col-md-9">
+							<b>Andamento:</b>
+										<select style="font-size:24px;" name="andamento" id="andamento" class="form-control" th:field="*{andamento}" required>
+											<option value=" "></option>
+											<option th:value="${'Atos iniciais'}" th:text="${'Atos iniciais'}"></option>
+											<option th:value="${'Em instrucao'}" th:text="${'Em instrução'}"></option>
+											<option th:value="${'Finalizado'}" th:text="${'Finalizado'}"></option>
+										</select>
+						</div><br>
+						
+						<div class="form-group col-md-9">
+							<b>Última portaria expedida:</b> <input style="font-size:24px;" type="text" class="form-control" th:field="*{ultimaPortariaExpedida}">
+						</div>
+	
+						<div class="form-group col-md-9">
+							<b>Data da publicação da última portaria:</b> <input style="font-size:24px;" type="date" class="form-control" th:field="*{dataPublicacaoUltimaPortaria}">
+						</div>
+						
+						<div class="form-group col-md-9">
+							<a style="font-size:25px; font-weight: bold" href="/listar_processos" class="btn btn-danger">Cancelar</a>
+							<input style="font-size:25px; font-weight: bold" type="submit" class="btn btn-success" value="Salvar"/>
+						</div>
+						
+					</form>
+				<br><br>
+			</div>
+		</div>
+		<footer th:replace="fragmentos/fragmentos :: footer"></footer>
+	</div>
+	
+	<script src="vendor/jquery/jquery.min.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+	<script src="js/sb-admin-2.js"></script>
+	<script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+	<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+	
+	<script>
+		$("#naturezaProcesso").change(function(){
+			$(this).find("option:selected").each(function(){
+				var opcao = $(this).attr("value");
+				if(opcao == 'PAD'){
+					$("#form-pad").css('display', 'block');
+				}else if(opcao == 'Sindicancia'){
+					$("#form-pad").hide();
+				}
+			})
+		});
+	</script>
+</body>
+</html>

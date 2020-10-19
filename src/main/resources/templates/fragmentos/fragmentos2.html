@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <link href="css/sb-admin-2.css" rel="stylesheet">
+</head>
+
+<body id="page-top">
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" th:fragment="cabecalho">
+	  <a class="navbar-brand" href="#">SGPAD</a>
+  </nav>
+		  
+  <div id="wrapper">
+
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar" th:fragment="sidebar">
+    
+       <!-- <a class="sidebar-brand d-flex align-items-center justify-content-center" th:href="@{/perfil/{id}(id=${usuarioLogado.matricula})}">
+        <div class="sidebar-brand-text mx-3" th:text="${usuarioLogado.nome}"></div>
+       </a> -->
+       
+       <hr class="sidebar-divider my-0">
+		      
+      <li class="nav-item">
+        <a class="nav-link collapsed" 
+           href="#"
+           data-toggle="collapse"
+           data-target="#collapseTwo"
+           aria-expanded="true"
+           aria-controls="collapseTwo">
+           
+          <i class="fas fa-fw fa-folder"></i>
+          <span>Processos</span>
+        </a>
+        
+        <div id="collapseTwo"
+             class="collapse"
+             aria-labelledby="headingTwo"
+             data-parent="#accordionSidebar">
+             
+          <div class="bg-white py-2 collapse-inner rounded">
+          	<h6 class="collapse-header">Listar processos como:</h6>
+            <a class="collapse-item" href="/listar_processos_como_presidente">Como presidente</a>
+            <a class="collapse-item" href="/listar_processos_como_assessor">Como assessor</a>
+            <a class="collapse-item" href="/listar_processos_como_secretario">Como secretário</a>
+          </div>
+        </div>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/agenda" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+          <i class="fas fa-fw fa-calendar-alt"></i>
+          <span>Agenda</span>
+        </a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/area_admin" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+          <i class="fas fa-fw fa-boss"></i>
+          <span>Área admin</span>
+        </a>
+      </li>
+
+      <hr class="sidebar-divider">
+      
+      <li class="nav-item active">
+        <a class="nav-link" href="/ajuda" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+          <i class="fas fa-fw fa-question"></i>
+          <span>Ajuda</span>
+        </a>
+      </li>
+      
+      <li class="nav-item active">
+        <a class="nav-link" href="/reportar_problema" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+          <i class="fas fa-fw fa-exclamation"></i>
+          <span>Reportar problema</span>
+        </a>
+      </li>
+      
+      <hr class="sidebar-divider">
+
+      <li class="nav-item active">
+        <a class="nav-link" href="/logout" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+          <i class="fas fa-fw fa-sign-out-alt"></i>
+          <span>Sair</span>
+        </a>
+      </li>
+		
+		      
+		      <hr class="sidebar-divider d-none d-md-block">
+		
+		      <div class="text-center d-none d-md-inline">
+		        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+		      </div>
+    </ul>
+    
+     <!-- INÍCIO SIDEBAR ADMIN -->
+		    
+    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar" th:fragment="sidebar_admin">
+    
+      <a class="sidebar-brand d-flex align-items-center justify-content-center">
+         <div class="sidebar-brand-text mx-3" th:text="${usuarioLogado}"></div>
+      </a>
+
+      <hr class="sidebar-divider my-0">
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/listar_todos_os_processos" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>Listar todos os processos</span>
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/listar_usuarios" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+          <i class="fas fa-fw fa-users"></i>
+          <span>Listar usuários</span>
+        </a>
+      </li>
+      
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="/" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+          <i class="fas fa-fw fa-user"></i>
+          <span>Área usuário</span>
+        </a>
+      </li>
+
+      <hr class="sidebar-divider">
+      
+      <li class="nav-item active">
+        <a class="nav-link" href="/ajuda" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+          <i class="fas fa-fw fa-question"></i>
+          <span>Ajuda</span>
+        </a>
+      </li>
+      
+      <li class="nav-item active">
+        <a class="nav-link" href="/reportar_problema" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+          <i class="fas fa-fw fa-exclamation"></i>
+          <span>Reportar problema</span>
+        </a>
+      </li>
+      
+      <hr class="sidebar-divider">
+
+      <li class="nav-item active">
+        <a class="nav-link" href="/login" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
+          <i class="fas fa-fw fa-sign-out-alt"></i>
+          <span>Sair</span>
+        </a>
+      </li>
+
+      
+      <hr class="sidebar-divider d-none d-md-block">
+
+      <div class="text-center d-none d-md-inline">
+        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+      </div>
+      
+    </ul>
+    
+   <!--  FIM SIDEBAR ADMIN -->
+    
+    <div id="content-wrapper" class="d-flex flex-column">
+    
+        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow" th:fragment="topbar"></nav>
+    
+    
+	    
+		<!-- <footer class="footer navbar-fixed-bottom" id="footer" th:fragment="footer">
+	        <div class="container my-auto">
+	          <div class="copyright text-center my-auto">
+	            <span>Copyright &copy; Copyright 2020</span>
+	            <span>SGPAD</span>
+	          </div>
+	        </div>
+	    </footer> -->
+	    </div>
+  </div>
+ 
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="js/sb-admin-2.min.js"></script>
+  
+</body>
+</html>

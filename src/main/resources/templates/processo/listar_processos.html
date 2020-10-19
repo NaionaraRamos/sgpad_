@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title>Listar Processos</title>
+
+<link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+<link href="/css/sb-admin-2.css" rel="stylesheet" th:href="@{/css/sb-admin-2.css}">
+
+<style>
+	span, a, #inst, #and, #fin, #todos, #ins {
+		font-size: 150%;
+		font-weight:bold;
+	}
+	
+	#numero, strong{
+		font-size: 150%;
+		color: black;
+		font-weight:bold;
+	}
+	
+	#h3 {
+	    font-size: 200%;
+		color: black;
+	}
+	
+	#h4 {
+	    font-size: 150%;
+		color: black;
+	}
+	
+</style>
+
+</head>
+<body id="page-top">
+
+	<nav th:replace="fragmentos/fragmentos :: cabecalho"></nav>
+	<div id="wrapper">
+		<ul th:replace="fragmentos/fragmentos :: sidebar"></ul>
+		<div id="content-wrapper" class="d-flex flex-column">
+			<span id="h3" style="margin-top: 20px; text-align: center">Listagem de Processos</span><br><br><br>
+			
+			<div style="margin-left: 1800px; content-align: middle; width: 400px; height: 100px">
+				<div style=" background-color: #99def9; width: 20px; height: 20px"></div><strong>Processos em Atos Iniciais</strong><br>
+				<div style=" background-color: #1cc88a; width: 20px; height: 20px"></div><strong>Processos em Instrução</strong><br>
+				<div style=" background-color: #858796; width: 20px; height: 20px"></div><strong>Processos Finalizados</strong><br>
+			</div>
+			<br>
+			<div id="divisao" th:fragment="listarProcessos">
+				<div class="content container" id="todosOsProcessos">
+					<!-- <span id="h4" style="margin: 10px">Todos os Processos</span><br><br><br> -->
+					
+					<button id="and" class="btn btn-primary"  style="margin: 10px" onclick="comoPresidente()" th:fragment="comoPresidente">Processos como Presidente</button>
+					<button id="inst" class="btn btn-primary"  style="margin: 10px" onclick="comoAssessor()" th:fragment="comoAssessor">Processos como Assessor</button>
+					<button id="fin" class="btn btn-primary"  style="margin: 10px" onclick="comoSecretario()" th:fragment="comoSecretario">Processos como Secretário</button>				
+					<a href="/inserir_processo" id="ins" class="btn btn-primary"  style="margin: 10px" th:fragment="inserir">Inserir novo processo</a><br><br>
+					
+					
+					<div th:each="processo: ${processo}" style="margin: 10px" th:if="${processo.andamento} == 'Atos iniciais'">
+						<div class="card bg-primary-claro mb-3" th:fragment="primary-claro">
+							<div id="numero" class="card-header bg-gray-200" th:text="${'Processo nº ' + processo.numeroProcesso}" th:fragment="header"></div>
+							<div class="card-body" th:fragment="texto">
+								<strong th:text="${'Interessado: ' + processo.interessado}"></strong><br>
+								<strong th:text="${'Andamento: ' + processo.andamento}"></strong><br>
+								<strong th:text="${'Presidente: ' + processo.presidente.nome}"></strong><br>
+								<strong th:text="${'Data do início do processo: ' + #dates.format(processo.dataInicioProcesso, 'dd/MM/yyyy')}"></strong><br>
+								<strong th:text="${'Duração do processo: ' + processo.diasCorridos + ' dias'}"></strong>
+							</div>
+							<div class="card-footer bg-gray-200" th:fragment="rodape">
+								<p>
+									<a th:href="@{/detalhar_processo/{id}(id=${processo.id})}">Detalhes</a>
+									| <a th:href="@{/alterar_processo/{id}(id=${processo.id})}">Alterar</a>
+								</p>
+							</div>
+						</div><br>
+					</div>
+					
+					<div th:each="processo: ${processo}" style="margin: 10px" th:if="${processo.andamento} == 'Em instrucao'">
+						<div class="card bg-success mb-3" th:fragment="success">
+							<div th:replace="::header"></div>
+							<div th:replace="::texto"></div>
+							<div th:replace="::rodape"></div>
+						</div><br>
+					</div>
+					
+					<div th:each="processo: ${processo}" style="margin: 10px" th:if="${processo.andamento} == 'Finalizado'">
+							<div class="card bg-secondary mb-3" th:fragment="secondary">
+								<div th:replace="::header"></div>
+								<div th:replace="::texto"></div>
+								<div th:replace="::rodape"></div>
+							</div><br>
+						</div>
+				</div><br>
+				
+				<div class="content container" id="processosComoPresidente">
+					<!-- <span id="h4" style="margin: 10px">Processos Como Presidente</span><br><br><br> -->
+					<button id="todos" class="btn btn-light"  style="margin: 10px" onclick="todosOsProcessos()" th:fragment="todos">Todos os Processos</button>
+					<button th:replace="::comoAssessor"></button>
+					<button th:replace="::comoSecretario"></button>
+					<a th:replace="::inserir"></a><br><br>
+					
+					<div th:each="processo: ${processo}" style="margin: 10px" th:if="${processo.presidente.nome} == ${usuarioLogado.nome} and ${processo.andamento} == 'Atos iniciais'">
+						<div th:replace="::primary-claro"></div>
+					</div>
+					
+					<div th:each="processo: ${processo}" style="margin: 10px" th:if="${processo.presidente.nome} == ${usuarioLogado.nome} and ${processo.andamento} == 'Em instrucao'">
+						<div th:replace="::success"></div>
+					</div>
+					
+					<div th:each="processo: ${processo}" style="margin: 10px" th:if="${processo.presidente.nome} == ${usuarioLogado.nome} and ${processo.andamento} == 'Finalizado'">
+						<div th:replace="::secondary"></div>
+					</div>
+				</div><br>
+					
+				<div class="content container" id="processosComoAssessor">
+					<!-- <span id="h4" style="margin: 10px">Processos como Assessor</span><br><br><br> -->
+					
+					<button th:replace="::todos"></button>
+					<button th:replace="::comoPresidente"></button>
+					<button th:replace="::comoSecretario"></button>				
+					<a th:replace="::inserir"></a><br><br>
+					
+					<div th:each="processo: ${processo}" style="margin: 10px" th:if="${processo.assessorUm.nome} == ${usuarioLogado.nome} and ${processo.andamento} == 'Atos iniciais'">
+						<div th:replace="::primary-claro"></div>
+					</div>
+					
+					<div th:each="processo: ${processo}" style="margin: 10px" th:if="${processo.assessorDois?.nome} == ${usuarioLogado.nome} and ${processo.andamento} == 'Atos iniciais'">
+						<div th:replace="::primary-claro"></div>
+					</div>
+				
+					<div th:each="processo: ${processo}" style="margin: 10px" th:if="${processo.assessorUm.nome} == ${usuarioLogado.nome} and ${processo.andamento} == 'Em instrucao'">
+						<div th:replace="::success"></div>
+					</div>
+					
+					<div th:each="processo: ${processo}" style="margin: 10px" th:if="${processo.assessorDois?.nome} == ${usuarioLogado.nome} and ${processo.andamento} == 'Em instrucao'">
+						<div th:replace="::success"></div>
+					</div>
+					
+					<div th:each="processo: ${processo}" style="margin: 10px" th:if="${processo.assessorUm.nome} == ${usuarioLogado.nome} and ${processo.andamento} == 'Finalizado'">
+						<div th:replace="::secondary"></div>
+					</div>
+					
+					<div th:each="processo: ${processo}" style="margin: 10px" th:if="${processo.assessorDois?.nome} == ${usuarioLogado.nome} and ${processo.andamento} == 'Finalizado'">
+						<div th:replace="::secondary"></div>
+					</div>
+				</div><br>
+				
+				<div class="content container" id="processosComoSecretario">
+					<!-- <span id="h4" style="margin: 10px">Processos como Secretário</span><br><br><br> -->
+					
+					<button th:replace="::todos"></button>
+					<button th:replace="::comoPresidente"></button>
+					<button th:replace="::comoAssessor"></button>
+					<a th:replace="::inserir"></a><br><br>
+					
+					<div th:each="processo: ${processo}" style="margin: 10px" th:if="${processo.secretario?.nome} == ${usuarioLogado.nome} and ${processo.andamento} == 'Atos iniciais'">
+						<div th:replace="::primary-claro"></div>
+					</div>
+			
+					<div th:each="processo: ${processo}" style="margin: 10px" th:if="${processo.secretario?.nome} == ${usuarioLogado.nome} and ${processo.andamento} == 'Em instrucao'">
+						<div th:replace="::success"></div>
+					</div>
+				
+					<div th:each="processo: ${processo}" style="margin: 10px" th:if="${processo.secretario?.nome} == ${usuarioLogado.nome} and ${processo.andamento} == 'Finalizado'">
+						<div th:replace="::secondary"></div>
+					</div>
+				</div><br>
+			</div>
+		</div>
+		<footer th:replace="fragmentos/fragmentos :: footer"></footer>
+	</div>
+  	
+	<script src="vendor/jquery/jquery.min.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+	<script src="js/sb-admin-2.js"></script>
+	<script>
+	function todosOsProcessos(){
+		 document.getElementById('todosOsProcessos').style.display = 'block';
+		 document.getElementById('processosComoPresidente').style.display = 'none';
+	     document.getElementById('processosComoAssessor').style.display = 'none';
+	     document.getElementById('processosComoSecretario').style.display = 'none';
+	}
+
+	function comoPresidente(){
+		 document.getElementById('todosOsProcessos').style.display = 'none';
+		 document.getElementById('processosComoPresidente').style.display = 'block';
+	     document.getElementById('processosComoAssessor').style.display = 'none';
+	     document.getElementById('processosComoSecretario').style.display = 'none';
+	}
+
+	function comoAssessor(){
+		 document.getElementById('todosOsProcessos').style.display = 'none';
+		 document.getElementById('processosComoPresidente').style.display = 'none';
+	     document.getElementById('processosComoAssessor').style.display = 'block';
+	     document.getElementById('processosComoSecretario').style.display = 'none';
+	}
+
+	function comoSecretario(){
+		 document.getElementById('todosOsProcessos').style.display = 'none';
+		 document.getElementById('processosComoPresidente').style.display = 'none';
+	     document.getElementById('processosComoAssessor').style.display = 'none';
+	     document.getElementById('processosComoSecretario').style.display = 'block';
+	}
+	</script>
+</body>
+</html>

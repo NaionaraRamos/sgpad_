@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title>Alterar dados</title>
+
+<link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet" th:href="@{/vendor/fontawesome-free/css/all.min.css}">
+<link href="/css/sb-admin-2.css" rel="stylesheet" th:href="@{/css/sb-admin-2.css}">
+
+</head>
+<body id="page-top">
+
+	<nav th:replace="fragmentos/fragmentos :: cabecalho"></nav>
+	<div id="wrapper">
+		<ul th:replace="fragmentos/fragmentos :: sidebar"></ul>
+		<div id="content-wrapper" class="d-flex flex-column">
+			<br><br>
+			<div class="content container">
+				
+				<h1 class="col-md-9">Alterar dados</h1>
+				
+					<form class="form-signin" method="post" th:object="${usuario}">
+						<p class="form-group col-md-9" th:text="${'Matrícula: ' + usuario.matricula}"></p>
+						<p class="form-group col-md-9" th:text="${'Email: ' + usuario.email}"></p>
+						<div class="form-group col-md-9">
+							Nome: <input type="text" class="form-control" th:field="*{nome}">
+							<div class="alert alert-danger mb-3" role="alert" th:if="${#fields.hasErrors('nome')}">
+                           		<label th:errors="*{nome}" class="validation-message alert-danger"></label>
+                       		</div>
+						</div>
+						
+						<div class="form-group col-md-9">
+							Nova senha: <input type="password" id="senha" name="senha" minlength="6" maxlength="10" class="form-control" th:field="*{senha}" onkeyup ="checar_senha()"/>
+						</div>
+						
+						<div class="form-group col-md-9">
+							Repita a senha: <input type="password" id="confirmarSenha" name="confirmarSenha" class="form-control" onkeyup="checar_senha()"/>
+							<span id="senhas"></span>
+						</div>
+						
+						<div class="form-group col-md-9">
+							<a href="/" class="btn btn-danger">Cancelar</a>&nbsp&nbsp&nbsp&nbsp
+							<input type="submit" class="btn btn-success" name="submit" value="Salvar" id="submit" disabled/>
+				       	</div>
+					</form>
+
+					<div id="dadosSalvos" class="alert alert-primary form-group col-md-9"><p id="paragrafo"></p></div>
+					
+			</div>
+		</div>
+		<footer th:replace="fragmentos/fragmentos :: footer"></footer>
+	</div>
+	
+	<script src="/vendor/jquery/jquery.min.js"></script>
+	<script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+	<script src="/js/sb-admin-2.min.js"></script>
+	
+	<script>
+	
+	function checar_senha(){
+		
+		if((document.getElementById('senha').value == "") || (document.getElementById('confirmarSenha').value == "")){
+			
+			document.getElementById('submit').disabled = true;
+			$("#senhas").html('');
+			
+		} else if(document.getElementById('senha').value == document.getElementById('confirmarSenha').value){
+			
+			document.getElementById('submit').disabled = false;
+			$("#senhas").html('As senhas conferem').css('color', 'green');
+	
+		}else{
+		
+			document.getElementById('submit').disabled = true;
+			$("#senhas").html('As senhas não conferem').css('color', 'red');
+		}
+	}
+	
+	</script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<title>Recuperar senha</title>
+
+<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+<link href="css/sb-admin-2.css" rel="stylesheet">
+<link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css">
+
+</head>
+<body>
+
+	<nav th:replace="fragmentos/fragmentos :: cabecalho"></nav>
+	<br><br>
+	<div class="container">
+		<h1 class="col-md-9">Recuperar senha</h1>
+		<div id="formRecuperarSenha">
+			<p th:text="${'Indique o email cadastrado no SGPAD para recuperar a senha.'}"></p>
+			<form action="/recuperar_senha" method="post" class="form-signin" th:object="${usuario}">
+				<div class="form-group col-md-9">
+					Email: <input type="text" class="form-control" name="email" id="email" required>
+				</div>
+				<div class="alert alert-danger mb-3" role="alert" th:if="${#fields.hasErrors('email')}">
+	            	<label th:errors="*{email}" class="validation-message alert-danger"></label>
+	            </div>
+				
+				<div class="form-group col-md-9">
+		           	<a href="/login" class="btn btn-danger">Cancelar</a>
+		           	<button class="btn btn-success">Enviar</button>
+		           	<!--  onclick="emailEnviado()" -->
+		       	</div>
+			</form>
+		</div>
+		
+		<!-- <div id="email_enviado" class="alert alert-primary">
+		    <p id="paragrafo">
+		</div><br><br> -->
+	</div>
+	<br><br>
+	<footer th:replace="fragmentos/fragmentos :: footer"></footer>
+
+	<script src="vendor/jquery/jquery.min.js"></script>
+	<script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+	<script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
+	
+	<script>
+	
+	/* var mensagem = "[[${mensagem}]]"
+	console.log(mensagem);	
+		function emailEnviado(){
+			var email = $("#email").val();
+			console.log(email);
+	
+			document.getElementById('email_enviado').style.display = 'block';
+			document.getElementById('formRecuperarSenha').style.display = 'none';
+			document.getElementById('paragrafo').innerHTML = "Um email foi enviado a " + email + " para a recuperação de senha.";
+		} */
+	
+	</script>
+</body>
+</html>
