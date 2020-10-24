@@ -51,10 +51,10 @@ public class ControllerAdmin {
 	
 	@GetMapping("/listar_usuarios")
 	public ModelAndView listarUsuarios(HttpServletRequest request) {
-		 ModelAndView mv = new ModelAndView("admin/listar_usuarios");
-	     Iterable <Usuario> usuarios = repositorioUsuario.carregarUsuariosNaoExcluidos();
-	     mv.addObject("usuario", usuarios);	
-	     return mv;
+		ModelAndView mv = new ModelAndView("admin/listar_usuarios");
+	     	Iterable <Usuario> usuarios = repositorioUsuario.carregarUsuariosNaoExcluidos();
+	     	mv.addObject("usuario", usuarios);	
+	     	return mv;
 	}
 
 	@GetMapping("/adicionar_usuario")
@@ -113,7 +113,6 @@ public class ControllerAdmin {
 		String senha = servicoUsuario.gerarSenha(usuario);
 		String url = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + "/login";
 		email.setSubject("Inserção");
-		System.out.println("servicoUsuario.getGeneratedString(): " + servicoUsuario.getGeneratedString());
 		email.setText("Você, "+ usuario.getNome() + ", acabou de ser adicionado ao SGPAD!. Utilize as seguintes credenciais para realizar o login:\n\n\nEmail: " + usuario.getEmail() + "\nSenha: " + senha + ".\n\nFaça login por aqui: " + url);
 		servicoNotificacao.enviarNotificacao(email);
 		
@@ -140,27 +139,13 @@ public class ControllerAdmin {
 		primeiroEmail = usuario.getEmail();
 		setPrimeiroEmail(usuario.getEmail());
 		
-	//	int t = repositorioUsuario.checarSeEhAdmin(usuario.getMatricula());
-		String t = repositorioUsuario.checarSeEhAdmin(usuario.getMatricula());//no heroku...
-		
-	//	System.out.println("Valor da String: " + t);
-		
-		//if(t == 0)
-		if(t == "0")//no heroku...
-		{
+		if(t == "0"){
 			boolean_alterar = false;
 			
 		} else 
-			if(t == "1")//no heroku...
-			{
-			boolean_alterar = true;
+			if(t == "1"){
+				boolean_alterar = true;
 		}
-		
-//		String booleanEmString = "" + isBoolean_alterar();
-//		mv.addObject("booleanEmString", booleanEmString);
-		
-		System.out.println("booleanEmString: " + t);//no heroku...
-		mv.addObject("booleanEmString", t);//no heroku...
 		
 		return mv;
 	}
@@ -225,11 +210,11 @@ public class ControllerAdmin {
 	
 	@GetMapping("/listar_todos_os_processos")
 	public ModelAndView listarTodosOsProcessos(HttpServletRequest request) {
-		 ModelAndView mv = new ModelAndView("listar_todos_os_processos");
-	     mv.setViewName("admin/listar_todos_os_processos");
-	     Iterable <Processo> processos = repositorioProcesso.findAll();
-	     mv.addObject("processo", processos);
-	     return mv;
+		ModelAndView mv = new ModelAndView("listar_todos_os_processos");
+	     	mv.setViewName("admin/listar_todos_os_processos");
+	     	Iterable <Processo> processos = repositorioProcesso.findAll();
+	     	mv.addObject("processo", processos);
+	     	return mv;
 	}
 	
 	@GetMapping("/detalhar_processo_1/{id}")
