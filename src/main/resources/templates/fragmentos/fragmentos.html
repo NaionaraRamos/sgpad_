@@ -26,42 +26,8 @@
 		  <a class="sidebar-brand d-flex align-items-center justify-content-center" th:href="@{/alterar_dados/{id}(id=${usuarioLogado.matricula})}">
 	        <div class="sidebar-brand d-flex align-items-center justify-content-center" th:text="${usuarioLogado.nome}"></div>
 	      </a>
-	      
-	     <!--  <li class="nav-item active" th:fragment="perfil">
-	        <a class="nav-link" th:href="@{/perfil/{id}(id=${usuarioLogado.matricula})}" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-	          <i class="fas fa-fw fa-user"></i>
-	          <span>Perfil</span>
-	        </a>
-	      </li> -->
 	
 	      <hr class="sidebar-divider my-0">
-	
-	     <!--  <li class="nav-item">
-	        <a class="nav-link collapsed" 
-	           href="#"
-	           data-toggle="collapse"
-	           data-target="#collapseTwo"
-	           aria-expanded="true"
-	           aria-controls="collapseTwo">
-	           
-	          <i class="fas fa-fw fa-folder"></i>
-	          <span>Processos</span>
-	        </a>
-	        
-	        <div id="collapseTwo"
-	             class="collapse"
-	             aria-labelledby="headingTwo"
-	             data-parent="#accordionSidebar">
-	             
-	          <div class="bg-white py-2 collapse-inner rounded">
-	          	<h6 class="collapse-header">Listar processos como:</h6>
-	            <a class="collapse-item" href="/listar_processos_como_presidente">Como presidente</a>
-	            <a class="collapse-item" href="/listar_processos_como_assessor">Como assessor</a>
-	            <a class="collapse-item" href="/listar_processos_como_secretario">Como secretário</a>
-	            <a class="collapse-item" href="/listar_processos">Todos os processos</a>
-	          </div>
-	        </div>
-	      </li> -->
 	      
 	      <li class="nav-item" th:fragment="listar_processos">
 	        <a class="nav-link collapsed" href="/listar_processos" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
@@ -69,13 +35,6 @@
 	          <span>Processos</span>
 	        </a>
 	      </li>
-	      
-		 <!--  <li class="nav-item" th:fragment="agenda">
-	        <a class="nav-link collapsed" href="/agenda" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-	          <i class="fas fa-fw fa-calendar-alt"></i>
-	          <span>Agenda</span>
-	        </a>
-	      </li> -->
 	      
 	      <li class="nav-item">
 	        <a class="nav-link collapsed" href="/listar_todos_os_processos" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
@@ -85,13 +44,6 @@
 	      </li>
 	
 	      <hr class="sidebar-divider">
-	      
-	     <!--  <li class="nav-item active" th:fragment="ajuda">
-	        <a class="nav-link" href="/ajuda" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-	          <i class="fas fa-fw fa-question"></i>
-	          <span>Ajuda</span>
-	        </a>
-	      </li> -->
 	      
 	      <li class="nav-item active" th:fragment="reportar">
 	        <a class="nav-link" href="/reportar_problema" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
@@ -108,7 +60,6 @@
 	          <span>Sair</span>
 	        </a>
 	      </li>
-	
 	      
 	      <hr class="sidebar-divider d-none d-md-block">
 	
@@ -119,7 +70,6 @@
 	    </ul>
 	    
 	    <!-- FIM SIDEBAR USUÁRIO-->
-	    
 	    
 	    
 	    <!-- INÍCIO SIDEBAR ADMIN-->
@@ -154,8 +104,6 @@
 	      </li>
 	
 	      <hr class="sidebar-divider">
-	      
-	     <!--  <li th:replace="::ajuda"></li> -->
 	      
 	      <li th:replace="::reportar"></li>
 	      
