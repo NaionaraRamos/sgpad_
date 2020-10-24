@@ -3,11 +3,6 @@ package com.sgpad.controllers;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-//import org.springframework.core.io.ByteArrayResource;
-//import org.springframework.core.io.Resource;
-//import org.springframework.http.HttpHeaders;
-//import org.springframework.http.MediaType;
-//import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -17,17 +12,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-//import org.springframework.web.bind.annotation.RequestParam;
-//import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-//import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-//import com.sgpad.modelos.Arquivo;
 import com.sgpad.modelos.Processo;
 import com.sgpad.modelos.Usuario;
 import com.sgpad.repositorios.RepositorioProcesso;
 import com.sgpad.repositorios.RepositorioUsuario;
-//import com.sgpad.servicos.Response;
-//import com.sgpad.servicos.ServicoArquivo;
 
 @Controller
 public class ControllerProcessos {
@@ -36,30 +25,6 @@ public class ControllerProcessos {
 	@Autowired private RepositorioProcesso repositorioProcesso;
 	Processo processo;
 	String numeroProcessoOriginal;
-	
-//	@Autowired ServicoArquivo servicoArquivo;
-//	
-//	@GetMapping("/downloadFile/{fileName:.+}")
-//	public ResponseEntity<Resource> downloadFile(@PathVariable String nomeArquivo, HttpServletRequest request){
-//		Arquivo arquivo = servicoArquivo.getArquivo(nomeArquivo);
-//		
-//		return ResponseEntity.ok()
-//				.contentType(MediaType.parseMediaType(arquivo.getTipo()))
-//				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + arquivo.getNome() + "\"")
-//				.body(new ByteArrayResource(arquivo.getDados()));
-//	}
-//	
-//	@PostMapping("/uploadFile")
-//	public Response uploadFile(@RequestParam("arquivo") MultipartFile arquivo) {
-//		Arquivo arq= servicoArquivo.armazenarArquivo(arquivo);
-//		
-//		String arquivoDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath()
-//				.path("/downloadFile/")
-//				.path(arq.getNome())
-//				.toUriString();
-//		
-//		return new Response(arq.getNome(), arquivoDownloadUri, arquivo.getContentType(), arquivo.getSize());
-//	}
 	
 	@ModelAttribute("usuarioLogado")
 	public Usuario usuarioLogado(Model model, @Valid Usuario usuario) {
@@ -72,7 +37,7 @@ public class ControllerProcessos {
 	
 	@GetMapping("/listar_processos")
 	public ModelAndView listarProcessos(HttpServletRequest request, @Valid Usuario usuario) {
-		 ModelAndView mv = new ModelAndView("listarProcessos");
+	     ModelAndView mv = new ModelAndView("listarProcessos");
 	     mv.setViewName("processo/listar_processos");
 	     
 	     String emailUsuario = request.getUserPrincipal().getName();
@@ -86,12 +51,12 @@ public class ControllerProcessos {
 	
 	@GetMapping("/inserir_processo")
 	public ModelAndView inserirProcesso() {
-		ModelAndView mv;
+	     ModelAndView mv;
 		
-		Iterable <Usuario> usuarios = repositorioUsuario.carregarUsuariosNaoExcluidos();
-		mv = new ModelAndView("processo/inserir_processo", "usuarios", usuarios);
-		mv.addObject("processo", new Processo());
-		return mv;
+	     Iterable <Usuario> usuarios = repositorioUsuario.carregarUsuariosNaoExcluidos();
+             mv = new ModelAndView("processo/inserir_processo", "usuarios", usuarios);
+	     mv.addObject("processo", new Processo());
+	     return mv;
 	}
 	
 	public String getNumeroProcessoOriginal() { return numeroProcessoOriginal; }
@@ -103,8 +68,8 @@ public class ControllerProcessos {
 		ModelAndView mv = new ModelAndView();
 		
 		Processo proc = repositorioProcesso.findByNumeroProcesso(processo.getNumeroProcesso());
-		System.out.println("Data Publicação: " + processo.getDataPublicacaoUltimaPortaria());
-		System.out.println("Última Portaria: " + processo.getUltimaPortariaExpedida());
+		//System.out.println("Data Publicação: " + processo.getDataPublicacaoUltimaPortaria());
+		//System.out.println("Última Portaria: " + processo.getUltimaPortariaExpedida());
 
 		
 		if(proc != null) {
@@ -144,7 +109,7 @@ public class ControllerProcessos {
 		
 		numeroProcessoOriginal = processo.getNumeroProcesso();
 		setNumeroProcessoOriginal(processo.getNumeroProcesso());
-		System.out.println(numeroProcessoOriginal);
+		//System.out.println(numeroProcessoOriginal);
 		
 		return mv;
 	}
