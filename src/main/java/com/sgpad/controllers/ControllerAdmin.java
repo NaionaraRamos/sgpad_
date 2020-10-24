@@ -139,6 +139,9 @@ public class ControllerAdmin {
 		primeiroEmail = usuario.getEmail();
 		setPrimeiroEmail(usuario.getEmail());
 		
+		//int t = repositorioUsuario.checarSeEhAdmin(usuario.getMatricula());
+		String t = repositorioUsuario.checarSeEhAdmin(usuario.getMatricula());
+		
 		if(t == "0"){
 			boolean_alterar = false;
 			
@@ -147,6 +150,7 @@ public class ControllerAdmin {
 				boolean_alterar = true;
 		}
 		
+		mv.addObject("booleanEmString", t);
 		return mv;
 	}
 	
