@@ -28,8 +28,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/").hasRole("USER")
 			.antMatchers("/perfil/{matricula}").hasRole("USER")
 			.antMatchers("/alterar_dados/{matricula}").hasRole("USER")
-//			.antMatchers("/inserir_processo").hasRole("USER")
-//			.antMatchers("/alterar_processo/{numero_processo}").hasRole("USER")
 			.antMatchers("/area_admin").hasRole("ADMIN")
 			.antMatchers("/listar_usuarios").hasRole("ADMIN")
 			.antMatchers("/listar_todos_os_processos").hasRole("ADMIN")
